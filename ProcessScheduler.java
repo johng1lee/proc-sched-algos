@@ -1,3 +1,3 @@
 public interface ProcessScheduler{
-    public Process getNextProcess();
+    public Process getNextProcess(int quantum);
 }
