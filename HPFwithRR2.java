@@ -46,8 +46,6 @@ public class HPFwithRR2
 	    executeProcesses();
 	    quantumCounter++;
 	}
-	System.out.println("Finished up to where I know I wanted--------------------------------------------");
-
 	if(quantumCounter < quantumCounterLimit){
 	    while(quantumCounter < quantumCounterLimit){
 		runTime.add("NA");
@@ -84,35 +82,27 @@ public class HPFwithRR2
     public Process getNextProcess(){
 	Process returningThis;
 	if(priority1.size()>0){
-	    System.out.println("Checking priority1 size as: "+Integer.toString(priority1.size()));
 	    returningThis = cycle(priority1);
 	    if(returningThis != null){
-		System.out.println("The next process is: " + returningThis.getName());
 		return returningThis;
 	    }
 
 	}
 	if(priority2.size()>0){
-	    System.out.println("Checking priority2 size as: "+Integer.toString(priority2.size()));
 	    returningThis = cycle(priority2);
 	    if(returningThis != null){
-		System.out.println("The next process is: " + returningThis.getName());
 		return returningThis;
 	    }
 	}
 	if(priority3.size()>0){
-	    System.out.println("Checking priority3 size as: "+Integer.toString(priority3.size()));
 	    returningThis = cycle(priority3);
 	    if(returningThis != null){
-		System.out.println("The next process is: " + returningThis.getName());
 		return returningThis;
 	    }
 	}
 	if(priority4.size()>0){
-	    System.out.println("Checking priority4 size as: "+Integer.toString(priority4.size()));
 	    returningThis = cycle(priority4);
 	    if(returningThis != null){
-		System.out.println("The next process is: " + returningThis.getName());
 		return returningThis;
 	    }
 
@@ -127,10 +117,8 @@ public class HPFwithRR2
 	LinkedList<Process> holdingList = new LinkedList<Process>();
 	while(processesIter.hasNext()){
 	    tempProcess = (Process)processesIter.next();
-	    System.out.println("Evaluating tempProcess: " + tempProcess.getName());
 	    if(tempProcess.getArrivalTime() <= quantumCounter){
 		nextProcess = tempProcess;
-		System.out.printf("Chose %s as process to return\n",nextProcess.getName());
 		processesIter.remove();
 		break;
 	    }
@@ -157,7 +145,7 @@ public class HPFwithRR2
 	}
 	return true;
     }
-    public boolean allProcessesCompleted(){ // NEED TO REWRITE FOR THIS APPLICATION
+    public boolean allProcessesCompleted(){
 	return priorityProcessIsComplete(priority1) && priorityProcessIsComplete(priority2) && priorityProcessIsComplete(priority3) && priorityProcessIsComplete(priority4);
     }
 
@@ -173,7 +161,7 @@ public class HPFwithRR2
 	}
     }
 
-    public void getIncompleteProcesses(){ //NEED TO REWRITE THIS FOR THIS APPLICATION
+    public void getIncompleteProcesses(){
 	extractIncompleteProcesses(priority1);
 	extractIncompleteProcesses(priority2);
 	extractIncompleteProcesses(priority3);
